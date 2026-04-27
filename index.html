@@ -26,49 +26,71 @@
 
   <!-- 主容器 -->
   <div class="container">
-    <!-- 广告区域 -->
-    <div class="ad-section">
-      <div class="ad-title">广告</div>
-      <div class="ad-content">
-        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=game%20website%20banner%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
+    <div class="main-content">
+      <!-- 广告区域 -->
+      <div class="ad-section">
+        <div class="ad-title">广告</div>
+        <div class="ad-content">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=game%20website%20banner%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
+        </div>
+      </div>
+
+      <!-- 游戏分类导航 -->
+      <div class="category-nav">
+        <h2>游戏分类</h2>
+        <div class="category-links">
+          <a href="category.html?id=all" class="category-link" data-category="all">全部游戏</a>
+          <a href="category.html?id=action" class="category-link" data-category="action">动作游戏</a>
+          <a href="category.html?id=adventure" class="category-link" data-category="adventure">冒险游戏</a>
+          <a href="category.html?id=puzzle" class="category-link" data-category="puzzle">益智游戏</a>
+          <a href="category.html?id=sports" class="category-link" data-category="sports">体育游戏</a>
+          <a href="category.html?id=strategy" class="category-link" data-category="strategy">策略游戏</a>
+          <a href="category.html?id=casual" class="category-link" data-category="casual">休闲游戏</a>
+        </div>
+      </div>
+
+      <!-- 热门游戏 -->
+      <div class="game-section hot-games">
+        <h2 class="section-title">热门游戏</h2>
+        <div class="game-grid">
+          <!-- 热门游戏将通过JavaScript动态渲染 -->
+        </div>
+      </div>
+
+      <!-- 广告区域 -->
+      <div class="ad-section">
+        <div class="ad-title">广告</div>
+        <div class="ad-content">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20game%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
+        </div>
+      </div>
+
+      <!-- 全部游戏 -->
+      <div class="game-section all-games">
+        <h2 class="section-title">全部游戏</h2>
+        <div class="game-grid">
+          <!-- 全部游戏将通过JavaScript动态渲染 -->
+        </div>
       </div>
     </div>
-
-    <!-- 游戏分类导航 -->
-    <div class="category-nav">
-      <h2>游戏分类</h2>
-      <div class="category-links">
-        <a href="category.html?id=all" class="category-link" data-category="all">全部游戏</a>
-        <a href="category.html?id=action" class="category-link" data-category="action">动作游戏</a>
-        <a href="category.html?id=adventure" class="category-link" data-category="adventure">冒险游戏</a>
-        <a href="category.html?id=puzzle" class="category-link" data-category="puzzle">益智游戏</a>
-        <a href="category.html?id=sports" class="category-link" data-category="sports">体育游戏</a>
-        <a href="category.html?id=strategy" class="category-link" data-category="strategy">策略游戏</a>
-        <a href="category.html?id=casual" class="category-link" data-category="casual">休闲游戏</a>
+    
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+      <!-- 热门排行榜 -->
+      <div class="rank-sidebar">
+        <h2 class="section-title">热门排行榜</h2>
+        <div class="rank-sidebar-list">
+          <!-- 热门排行榜将通过JavaScript动态渲染 -->
+        </div>
+        <a href="rank.html" class="rank-more">查看更多 ></a>
       </div>
-    </div>
-
-    <!-- 热门游戏 -->
-    <div class="game-section hot-games">
-      <h2 class="section-title">热门游戏</h2>
-      <div class="game-grid">
-        <!-- 热门游戏将通过JavaScript动态渲染 -->
-      </div>
-    </div>
-
-    <!-- 广告区域 -->
-    <div class="ad-section">
-      <div class="ad-title">广告</div>
-      <div class="ad-content">
-        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20game%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
-      </div>
-    </div>
-
-    <!-- 全部游戏 -->
-    <div class="game-section all-games">
-      <h2 class="section-title">全部游戏</h2>
-      <div class="game-grid">
-        <!-- 全部游戏将通过JavaScript动态渲染 -->
+      
+      <!-- 广告区域 -->
+      <div class="ad-section">
+        <div class="ad-title">广告</div>
+        <div class="ad-content">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=sidebar%20game%20ad%20colorful%20cartoon%20style&image_size=portrait_4_3" alt="广告" class="ad-image">
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,8 @@ function initPage() {
     initCategoryPage();
   } else if (currentPage.includes('game.html')) {
     initGamePage();
+  } else if (currentPage.includes('rank.html')) {
+    initRankPage();
   }
   
   // 初始化搜索功能
@@ -27,6 +29,8 @@ function initHomePage() {
   renderHotGames();
   // 渲染所有游戏
   renderAllGames();
+  // 渲染侧边栏热门排行榜
+  renderSidebarRank();
 }
 
 // 初始化分类页
@@ -238,4 +242,165 @@ function formatNumber(num) {
 // 分类切换
 function switchCategory(categoryId) {
   window.location.href = `category.html?id=${categoryId}`;
+}
+
+// 初始化排行榜页面
+function initRankPage() {
+  // 获取URL参数中的排行榜类型
+  const urlParams = new URLSearchParams(window.location.search);
+  const rankType = urlParams.get('type') || 'hot';
+  
+  // 高亮当前排行榜类型
+  highlightRankType(rankType);
+  
+  // 渲染排行榜列表
+  renderRankList(rankType);
+}
+
+// 渲染侧边栏热门排行榜
+function renderSidebarRank() {
+  const rankSidebarList = document.querySelector('.rank-sidebar-list');
+  if (rankSidebarList) {
+    rankSidebarList.innerHTML = '';
+    
+    // 取前10个热门游戏
+    const topGames = hotRank.slice(0, 10);
+    
+    topGames.forEach((game, index) => {
+      const rankItem = document.createElement('div');
+      rankItem.className = `rank-sidebar-item rank-${index + 1}`;
+      
+      // 获取分类名称
+      const category = categories.find(cat => cat.id === game.category);
+      const categoryName = category ? category.name : '未知分类';
+      
+      rankItem.innerHTML = `
+        <div class="rank-number">${index + 1}</div>
+        <img src="${game.cover}" alt="${game.title}" class="rank-sidebar-cover">
+        <div class="rank-sidebar-info">
+          <a href="game.html?id=${game.id}" class="rank-sidebar-title">${game.title}</a>
+          <span class="rank-sidebar-category">${categoryName}</span>
+        </div>
+      `;
+      
+      rankSidebarList.appendChild(rankItem);
+    });
+  }
+}
+
+// 渲染排行榜列表
+function renderRankList(rankType) {
+  const rankList = document.getElementById('rank-list');
+  const rankTitle = document.getElementById('rank-title');
+  
+  if (rankList && rankTitle) {
+    // 设置排行榜标题
+    switch (rankType) {
+      case 'hot':
+        rankTitle.textContent = '综合热门游玩榜';
+        break;
+      case 'rise':
+        rankTitle.textContent = '今日飙升榜';
+        break;
+      case 'rating':
+        rankTitle.textContent = '好评评分榜';
+        break;
+      case 'favorite':
+        rankTitle.textContent = '收藏人气榜';
+        break;
+      default:
+        // 分类排行榜
+        const category = categories.find(cat => cat.id === rankType);
+        rankTitle.textContent = category ? `${category.name}榜` : '游戏排行榜';
+    }
+    
+    // 获取排行榜数据
+    const rankData = getRankData(rankType);
+    
+    rankList.innerHTML = '';
+    
+    if (rankData.length === 0) {
+      rankList.innerHTML = '<p>该排行榜暂无数据</p>';
+      return;
+    }
+    
+    // 取前100个游戏
+    const topGames = rankData.slice(0, 100);
+    
+    topGames.forEach((game, index) => {
+      const rankItem = createRankItem(game, index + 1, rankType);
+      rankList.appendChild(rankItem);
+    });
+  }
+}
+
+// 高亮当前排行榜类型
+function highlightRankType(rankType) {
+  const rankLinks = document.querySelectorAll('.rank-link');
+  rankLinks.forEach(link => {
+    if (link.getAttribute('data-type') === rankType) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+// 获取排行榜数据
+function getRankData(rankType) {
+  switch (rankType) {
+    case 'hot':
+      return hotRank;
+    case 'rise':
+      return riseRank;
+    case 'rating':
+      return ratingRank;
+    case 'favorite':
+      return favoriteRank;
+    default:
+      // 分类排行榜
+      return categoryRanks[rankType] || [];
+  }
+}
+
+// 创建排行榜项
+function createRankItem(game, rank, rankType) {
+  const item = document.createElement('div');
+  item.className = `rank-item rank-${rank}`;
+  
+  // 获取分类名称
+  const category = categories.find(cat => cat.id === game.category);
+  const categoryName = category ? category.name : '未知分类';
+  
+  // 确定显示的数据
+  let rankData = '';
+  switch (rankType) {
+    case 'hot':
+      rankData = `游玩: ${formatNumber(game.plays)}`;
+      break;
+    case 'rise':
+      rankData = `涨幅: ${formatNumber(game.rise)}`;
+      break;
+    case 'rating':
+      rankData = `评分: ${game.rating}`;
+      break;
+    case 'favorite':
+      rankData = `收藏: ${formatNumber(game.favorites)}`;
+      break;
+    default:
+      rankData = `游玩: ${formatNumber(game.plays)}`;
+  }
+  
+  item.innerHTML = `
+    <div class="rank-number">${rank}</div>
+    <img src="${game.cover}" alt="${game.title}" class="rank-cover">
+    <div class="rank-info">
+      <a href="game.html?id=${game.id}" class="rank-title">${game.title}</a>
+      <span class="rank-category">${categoryName}</span>
+      <div class="rank-data">${rankData}</div>
+    </div>
+    <a href="game.html?id=${game.id}" class="play-btn rank-play-btn">开始游戏</a>
+  `;
+  
+  return item;
 }
