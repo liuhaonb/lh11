@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小游戏平台 - 首页</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">小游戏平台</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="category.html">游戏分类</a></li>
+        <li><a href="#">排行榜</a></li>
+        <li><a href="#">关于我们</a></li>
+      </ul>
+      <div class="search-container">
+        <input type="text" class="search-box" placeholder="搜索游戏...">
+        <button class="search-btn">搜索</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主容器 -->
+  <div class="container">
+    <!-- 广告区域 -->
+    <div class="ad-section">
+      <div class="ad-title">广告</div>
+      <div class="ad-content">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=game%20website%20banner%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
+      </div>
+    </div>
+
+    <!-- 游戏分类导航 -->
+    <div class="category-nav">
+      <h2>游戏分类</h2>
+      <div class="category-links">
+        <a href="category.html?id=all" class="category-link" data-category="all">全部游戏</a>
+        <a href="category.html?id=action" class="category-link" data-category="action">动作游戏</a>
+        <a href="category.html?id=adventure" class="category-link" data-category="adventure">冒险游戏</a>
+        <a href="category.html?id=puzzle" class="category-link" data-category="puzzle">益智游戏</a>
+        <a href="category.html?id=sports" class="category-link" data-category="sports">体育游戏</a>
+        <a href="category.html?id=strategy" class="category-link" data-category="strategy">策略游戏</a>
+        <a href="category.html?id=casual" class="category-link" data-category="casual">休闲游戏</a>
+      </div>
+    </div>
+
+    <!-- 热门游戏 -->
+    <div class="game-section hot-games">
+      <h2 class="section-title">热门游戏</h2>
+      <div class="game-grid">
+        <!-- 热门游戏将通过JavaScript动态渲染 -->
+      </div>
+    </div>
+
+    <!-- 广告区域 -->
+    <div class="ad-section">
+      <div class="ad-title">广告</div>
+      <div class="ad-content">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20game%20ad%20colorful%20cartoon%20style&image_size=landscape_16_9" alt="广告" class="ad-image">
+      </div>
+    </div>
+
+    <!-- 全部游戏 -->
+    <div class="game-section all-games">
+      <h2 class="section-title">全部游戏</h2>
+      <div class="game-grid">
+        <!-- 全部游戏将通过JavaScript动态渲染 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>关于我们</h3>
+        <ul>
+          <li><a href="#">平台介绍</a></li>
+          <li><a href="#">联系我们</a></li>
+          <li><a href="#">加入我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>帮助中心</h3>
+        <ul>
+          <li><a href="#">常见问题</a></li>
+          <li><a href="#">游戏指南</a></li>
+          <li><a href="#">用户反馈</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>法律信息</h3>
+        <ul>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">用户协议</a></li>
+          <li><a href="#">版权声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 小游戏平台. 保留所有权利.</p>
+    </div>
+  </footer>
+
+  <!-- 引入数据和脚本 -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
